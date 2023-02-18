@@ -2,27 +2,8 @@ import mongoose from "mongoose";
 import express, { Express } from "express";
 import PostModel from "./models/post.model";
 import SerializePost from "./middleware/validatePost";
-import swaggerJSDoc from "swagger-jsdoc";
-
-const options = {
-  definition: {
-    openapi: "3.0.0",
-    info: {
-      title: "Api testing",
-      version: "1.0.0",
-    },
-    servers: [
-      {
-        url: "http://localhost:8080/",
-      },
-    ],
-  },
-  apis: ["routes.ts"],
-};
 
 function routes(app: Express) {
-  const swaggerSpec = swaggerJSDoc(options);
-
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
